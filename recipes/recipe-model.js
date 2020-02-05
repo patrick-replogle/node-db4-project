@@ -35,10 +35,32 @@ function getRecipesByIngredient(id) {
     .where("ingredients.id", id);
 }
 
+function addRecipe(data) {
+  return db("recipes")
+    .insert(data)
+    .then(([id]) => this.getRecipeById(id));
+}
+
+function updateRecipe(id, changes) {
+  return db("recipes")
+    .where("id", id)
+    .update(changes)
+    .then(count => (count > 0 ? this.getRecipeById(id) : null));
+}
+
+function removeRecipe(id) {
+  return db("recipes")
+    .where("id", id)
+    .del();
+}
+
 module.exports = {
   getRecipes,
   getRecipeById,
   getShoppingList,
   getInstructions,
-  getRecipesByIngredient
+  getRecipesByIngredient,
+  addRecipe,
+  updateRecipe,
+  removeRecipe
 };
