@@ -11,6 +11,12 @@ exports.seed = function(knex, Promise) {
       temperature: "medium heat",
       time: "20 minutes",
       servings: "Three semi-hungry people"
+    },
+    {
+      name: "Lasagna",
+      temperature: "medium heat",
+      time: "1hr",
+      servings: "The whole family"
     }
   ]);
 };

@@ -12,6 +12,11 @@ exports.seed = function(knex, Promise) {
       instruction:
         "Pour sauce on to pasta and add parmesan to your heart's content",
       recipe_id: 2
+    },
+    {
+      step_number: 1,
+      instruction: "I'm too lazy to write more than one step",
+      recipe_id: 3
     }
   ]);
 };
