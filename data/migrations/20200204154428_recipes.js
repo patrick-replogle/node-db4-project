@@ -5,9 +5,9 @@ exports.up = async function(knex) {
       .string("name")
       .notNullable()
       .unique();
-    table.string("temperature").notNullable();
-    table.string("time").notNullable();
-    table.string("servings").notNullable();
+    table.string("temperature");
+    table.string("time");
+    table.string("servings");
   });
 
   await knex.schema.createTable("ingredients", table => {
@@ -24,10 +24,7 @@ exports.up = async function(knex) {
       .integer("step_number")
       .unsigned()
       .notNullable();
-    table
-      .text("instruction")
-      .notNullable()
-      .references();
+    table.text("instruction").notNullable();
     table
       .integer("recipe_id")
       .notNullable()
@@ -41,21 +38,22 @@ exports.up = async function(knex) {
     table.increments();
     table
       .integer("recipe_id")
-      .noNullable.unsigned()
+      .notNullable()
+      .unsigned()
       .references("id")
       .inTable("recipes")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
     table
       .integer("ingredient_id")
-      .unsiged()
-      .nonNullable()
+      .unsigned()
+      .notNullable()
       .references("id")
-      .intable("ingredients")
+      .inTable("ingredients")
       .onDelete("CASCADE")
       .onUpdate("CASCADE");
-    table.float("quantity").nonNullable();
-    table.float("measurement");
+    table.float("quantity").notNullable();
+    table.string("measurement");
   });
 };
 
