@@ -5,9 +5,18 @@ exports.up = async function(knex) {
       .string("name")
       .notNullable()
       .unique();
-    table.string("temperature");
-    table.string("time");
-    table.string("servings");
+    table
+      .string("temperature")
+      .notNullable()
+      .defaultTo("");
+    table
+      .string("time")
+      .notNullable()
+      .defaultTo("");
+    table
+      .string("servings")
+      .notNullable()
+      .defaultTo("");
   });
 
   await knex.schema.createTable("ingredients", table => {
